@@ -1,0 +1,369 @@
+/* =================================================
+   GLOBAL
+================================================= */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background:
+        linear-gradient(rgba(255,182,193,0.35), rgba(255,105,180,0.35)),
+        url("../img/hpbd.jpg") center / cover fixed no-repeat;
+    font-family: "Nunito Sans", sans-serif;
+    color: #fff;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* =================================================
+   BACKGROUND SNOW + STARS
+================================================= */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    pointer-events: none;
+    z-index: 999;
+}
+
+body::before {
+    background-image:
+        radial-gradient(circle, rgba(255,182,193,0.8) 2px, transparent 2px);
+    background-size: 60px 60px;
+    animation: snowFall 18s linear infinite;
+}
+
+body::after {
+    background-image:
+        radial-gradient(circle, rgba(255,255,255,0.9) 1.5px, transparent 2px);
+    background-size: 90px 90px;
+    animation: snowFall 30s linear infinite;
+}
+
+@keyframes snowFall {
+    from { background-position: 0 -100vh; }
+    to   { background-position: 0 100vh; }
+}
+
+/* =================================================
+   BANNER
+================================================= */
+.img_banner_hpbd {
+    background:
+        linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.1)),
+        url("../img/3d28ae425248a05544665dd53400f52e.jpg")
+        center / cover no-repeat;
+    padding: 90px 20px;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    animation: fadeDown 1.2s ease;
+}
+
+.img_banner_hpbd h1 {
+    font-family: "Fredoka One", cursive;
+    font-size: 3.2rem;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 0 30px rgba(255,105,180,0.9);
+}
+
+.jumbotron {
+    background: transparent;
+    margin-bottom: 0;
+}
+
+/* =================================================
+   IMAGE PREVIEW
+================================================= */
+.img-thumbnail {
+    border-radius: 30px;
+    padding: 10px;
+    background: rgba(255,255,255,0.25);
+    box-shadow: 0 25px 60px rgba(255,105,180,0.45);
+    transition: all 0.45s ease;
+}
+
+.img-thumbnail:hover {
+    transform: scale(1.06) rotate(-0.8deg);
+    box-shadow: 0 35px 80px rgba(255,182,193,0.75);
+}
+
+/* =================================================
+   MODAL
+================================================= */
+.modal-content {
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    border-radius: 35px;
+    border: none;
+    color: #4a1c40;
+    animation: zoomIn 0.5s ease;
+}
+
+.modal-title {
+    font-family: "Pacifico", cursive;
+    font-size: 2.4rem;
+    color: #ff4d6d;
+    text-align: center;
+    text-shadow: 0 0 12px rgba(255,255,255,0.8);
+}
+
+/* =================================================
+   ENVELOPE OPEN EFFECT
+================================================= */
+.envelope {
+    perspective: 1200px;
+}
+
+.card-message {
+    position: relative;
+    margin: 40px auto;
+    max-width: 650px;
+    transform-origin: top center;
+    animation: openCard 1.4s ease forwards;
+}
+
+@keyframes openCard {
+    0%   { transform: rotateX(-75deg); opacity: 0; }
+    60%  { transform: rotateX(15deg);  opacity: 1; }
+    100% { transform: rotateX(0deg); }
+}
+
+/* =================================================
+   CARD IMAGE
+================================================= */
+.card-message img {
+    width: 100%;
+    border-radius: 35px;
+    box-shadow: 0 30px 70px rgba(255,105,180,0.4);
+}
+
+/* =================================================
+   STICKER TEXT
+================================================= */
+.card-message p {
+    position: absolute;
+    font-family: "Pacifico", cursive;
+    font-size: 1.6rem;
+    padding: 8px 18px;
+    background: rgba(255,255,255,0.9);
+    border-radius: 999px;
+    color: #ff4d6d;
+    box-shadow: 0 8px 25px rgba(255,105,180,0.35);
+    white-space: nowrap;
+    animation: fadeUp 0.8s ease both;
+}
+
+/* HEART BEAT */
+.card-message p::after {
+    content: "💖";
+    margin-left: 6px;
+    display: inline-block;
+    animation: heartBeat 1.6s infinite;
+}
+
+@keyframes heartBeat {
+    0% { transform: scale(1); }
+    20% { transform: scale(1.08); }
+    40% { transform: scale(1); }
+    60% { transform: scale(1.12); }
+    100% { transform: scale(1); }
+}
+
+/* =================================================
+   TEXT POSITIONS
+================================================= */
+.top-left {
+    top: 25px;
+    left: 25px;
+    font-size: 1.3rem;
+}
+
+.top-right {
+    top: 25px;
+    right: 25px;
+    font-size: 1.3rem;
+}
+
+.center-text {
+    bottom: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.1rem;
+    background: linear-gradient(135deg, #fff0f5, #ffe4e1);
+    color: #ff006e;
+    box-shadow: 0 0 30px rgba(255,182,193,0.9);
+    animation:
+        fadeUp 1s ease forwards,
+        glowText 2.5s infinite;
+}
+
+.bottom-left {
+    bottom: 25px;
+    left: 30px;
+    font-size: 1.3rem;
+}
+
+/* =================================================
+   GLOW TEXT
+================================================= */
+@keyframes glowText {
+    0%   { box-shadow: 0 0 10px rgba(255,182,193,0.6); }
+    50%  { box-shadow: 0 0 35px rgba(255,105,180,0.9); }
+    100% { box-shadow: 0 0 10px rgba(255,182,193,0.6); }
+}
+
+/* =================================================
+   HOVER EFFECT
+================================================= */
+.card-message p:hover {
+    transform: scale(1.1) rotate(-2deg);
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+/* =================================================
+   FOOTER
+================================================= */
+.footer {
+    background: linear-gradient(to right, #ff9a9e, #fad0c4);
+    color: #5a1a3c;
+    padding: 35px 0;
+    font-size: 1.15rem;
+    text-align: center;
+}
+
+/* =================================================
+   ANIMATIONS BASIC
+================================================= */
+@keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-40px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.85); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+}
+
+/* =================================================
+   RESPONSIVE
+================================================= */
+@media (max-width: 768px) {
+    .img_banner_hpbd h1 {
+        font-size: 2.2rem;
+    }
+
+    .card-message p {
+        font-size: 1.2rem;
+    }
+
+    .center-text {
+        font-size: 1.5rem;
+    }
+}
+/* =========================
+   HEART FLOAT BACKGROUND
+========================= */
+.heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 18px;
+    color: #ff5c8a;
+    animation: floatUp linear forwards;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-120vh) scale(1.8);
+        opacity: 0;
+    }
+}
+
+/* =========================
+   HEART PULSE FOR HANDWRITING
+========================= */
+.handwriting-text::after {
+    content: " ❤️";
+    display: inline-block;
+    animation: heartPulse 1.5s infinite;
+}
+
+@keyframes heartPulse {
+    0% { transform: scale(1); }
+    30% { transform: scale(1.2); }
+    60% { transform: scale(1); }
+}
+
+/* =========================
+   MODERN FOOTER
+========================= */
+.footer-modern {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 14px 0;
+
+    background: linear-gradient(
+        to right,
+        rgba(255, 192, 203, 0.25),
+        rgba(255, 182, 193, 0.25)
+    );
+    backdrop-filter: blur(10px);
+
+    text-align: center;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 0.95rem;
+    color: #7a2e4a;
+
+    box-shadow: 0 -4px 20px rgba(255, 182, 193, 0.25);
+    z-index: 1000;
+}
+
+.footer-inner {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    opacity: 0.9;
+}
+
+.footer-inner .dot {
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+.footer-inner .heart {
+    margin-left: 4px;
+    color: #ff4d6d;
+    animation: footerHeart 2s infinite;
+}
+
+/* Tim đập rất nhẹ */
+@keyframes footerHeart {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .footer-modern {
+        font-size: 0.85rem;
+        padding: 12px 0;
+    }
+}

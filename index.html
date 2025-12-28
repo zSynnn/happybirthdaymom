@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <title>HPBD Mom</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Nunito+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/css01.css">
+</head>
+
+<body>
+
+<!-- =========================
+     BANNER
+========================= -->
+<div class="container-fluid">
+    <div class="jumbotron img_banner_hpbd text-center">
+        <h1>To My Mom : Ngô Thị Khánh Ly</h1>
+    </div>
+</div>
+
+<!-- =========================
+     MAIN IMAGE
+========================= -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <img 
+                src="img/Winter happy birthday.jpg"
+                class="img-responsive img-thumbnail center-block"
+                style="height:360px; cursor:pointer"
+                data-toggle="modal"
+                data-target="#myModal"
+                alt="Happy Birthday">
+        </div>
+    </div>
+</div>
+
+<!-- =========================
+     MODAL
+========================= -->
+<div class="modal fade" id="myModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <!-- Header -->
+            <div class="modal-header text-center">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">🎂 Birthday Card for Mom</h4>
+            </div>
+
+            <!-- Body -->
+            <div class="modal-body text-center">
+
+                <!-- Ảnh mở đầu -->
+                <img src="img/Winter happy birthday.jpg"
+                     class="img-responsive center-block"
+                     style="max-height:480px">
+
+                <!-- Nhạc -->
+                <div style="margin:20px 0">
+                    <audio id="hpbdAudio" controls>
+                        <source src="ms/hpbd.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+
+                <!-- Thiệp -->
+                <div class="card-message">
+
+                    <img src="img/Snowmen-and-Sledding-Thank-You-Note.jpg.png"
+                         class="img-responsive center-block">
+
+                    <!-- ✍️ CHỮ VIẾT TAY -->
+                    <div class="handwriting-text">
+                        Dear Mom,<br><br>
+                        In these last days of the year,<br>
+                        I wish you a birthday filled with peace,<br>
+                        gentle smiles, and endless love.<br><br>
+                        With all my love,<br>
+                        Your child
+                    </div>
+
+                </div>
+
+                <!-- Ảnh kết -->
+                <img src="img/Truk.jpg"
+                     class="img-responsive center-block"
+                     style="max-height:260px; margin-top:20px">
+
+            </div>
+
+            <!-- Footer -->
+            <div class="modal-footer text-center">
+                <button class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- =========================
+     FOOTER
+========================= -->
+<footer class="footer-modern">
+    <div class="footer-inner">
+        <span>© 2025</span>
+        <span class="dot">•</span>
+        <span>Minh Khôi</span>
+        <span class="heart">❤</span>
+    </div>
+</footer>
+
+<!-- =========================
+     SCRIPTS
+========================= -->
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.js"></script>
+
+<script>
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerText = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (6 + Math.random() * 4) + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 10000);
+    }
+
+    $('#myModal').on('shown.bs.modal', function () {
+        const audio = document.getElementById('hpbdAudio');
+        audio.currentTime = 0;
+        audio.play();
+
+        window.heartInterval = setInterval(createHeart, 700);
+    });
+
+    $('#myModal').on('hidden.bs.modal', function () {
+        document.getElementById('hpbdAudio').pause();
+        clearInterval(window.heartInterval);
+    });
+
+    document.addEventListener("click", function(e) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerText = "💖";
+        heart.style.left = e.clientX + "px";
+        heart.style.bottom = "20px";
+        heart.style.animationDuration = "4s";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 5000);
+    });
+</script>
+
+</body>
+</html>
